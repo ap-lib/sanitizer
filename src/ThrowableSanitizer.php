@@ -41,12 +41,13 @@ readonly class ThrowableSanitizer implements Sanitizer
             $previous_entries_count = is_null($previous_entries_count) ?
                 $this->previous_entries_count :
                 $previous_entries_count;
-        }
-        if ($previous_entries_count > 0) {
-            $data['previous'] = $this->sanitizeThrowable(
-                $value->getPrevious(),
-                $previous_entries_count - 1
-            );
+
+            if ($previous_entries_count > 0) {
+                $data['previous'] = $this->sanitizeThrowable(
+                    $value->getPrevious(),
+                    $previous_entries_count - 1
+                );
+            }
         }
 
         return $data;
